@@ -5,46 +5,66 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [login, setLogin] = useState(false)
 
     const handleSubmit = async (e) => {
-        console.log('email', email);
-        console.log('password', password);
-
-        // e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/login', { email, password });
-            console.log('Login Success:', response.data);
+            setLogin(true)
             setError(response.data?.sucess);
-
         } catch (err) {
-            console.log('err', err.response);
+            setLogin(false)
             setError(err?.response.data?.error);
         }
     };
 
     return (
-        <>
-      <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            {error && <p>{error}</p>}
-            <button
-                type="submit"
-                onClick={() => {
-                    handleSubmit()
-                }}
-            >Login</button>
-    </>
-  );
+        <div className='login-page'>
+            <div className='login-comp'>
+                <div className='wrapper'>
+                    <div className='email'>
+                        <label>Email :</label>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value)
+                            }}
+                            onBlur={(e) => {
+
+                            }}
+                        />
+                    </div>
+                    <div className='password'>
+                        <label style={{ right: '24px' }}>Password :</label>
+                        <input
+                            style={{
+                                right: '14px',
+                                position: 'relative'
+                            }}
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                            }}
+                            onBlur={(e) => {
+
+                            }}
+                        />
+                    </div>
+                    {error && <p className={login ? 'okMsg' : 'errMsg'}>{error}</p>}
+                    <button
+                        type="submit"
+                        onClick={() => {
+                            handleSubmit()
+                        }}
+                    >Login</button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default Login;

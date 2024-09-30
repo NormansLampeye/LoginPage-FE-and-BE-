@@ -32,7 +32,59 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+.login-page {
+  height: 100vh;
+}
+
+.login-comp {
+  border: 1px solid #6fe7c9eb;
+  border-radius: 8px;
+  width: 20%;
+  height: 37%;
+  top: 100px;
+  position: relative;
+  left: 39%;
+  background-color: #91d8d62e;
+}
+
+.wrapper {
+  top: 100px;
+  position: relative;
+
+  label {
+    /* background-color: #282c34; */
+    right: 10px;
+    position: relative;
+  }
+
+  input {
+    /* background-color: #3e6ece; */
+
+  }
+}
+
+.errMsg{
+  border: 2px double #ff0000;
+  width: 80%;
+  left: 35px;
+  position: relative;
+  border-radius: 20px
+}
+
+.okMsg{
+  border: 2px double #24fd02;
+  width: 80%;
+  left: 35px;
+  position: relative;
+  border-radius: 20px
+}
+
+.email {}
+
+.password {}
